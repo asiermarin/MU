@@ -16,11 +16,14 @@ namespace MU.Modelos
 
         public List<string> Historial { get; set; }
 
+        public bool ContieneU { get; set; }
+
         public Mu(string cadenaInicial, string ultimaRegla/*, List<string> historial*/)
         {
             Cadena = cadenaInicial;
             UltimaRegla = ultimaRegla;
             ContieneIII = false;
+            ContieneU = false;
 
             /*
             Historial = new List<string>(); 
