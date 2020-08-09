@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Timers;
 
 namespace MU
 {
@@ -82,15 +83,12 @@ namespace MU
                 var muReglaUno = _adminReglas.AplicarReglaUnoSiEsPosible(muDeLista);   
                 var muReglaDos = _adminReglas.AplicarReglaDosSiEsPosible(muDeLista);
                 var listReglaTres = _adminReglas.AplicarReglaTresSiEsPosible(muDeLista);
-                /*
-                var muReglaCuatro = _adminReglas.AplicarReglaCuatroSiEsPosible(muDeLista);
-                GuardarInstancia(muReglaCuatro);
-                */
-
+                var listReglaCuatro = _adminReglas.AplicarReglaCuatroSiEsPosible(muDeLista);
+                
                 GuardarInstancia(muReglaUno);
                 GuardarInstancia(muReglaDos);
                 GuardarVariasInstacias(listReglaTres);
-            
+                GuardarVariasInstacias(listReglaCuatro);
             }
         }
 

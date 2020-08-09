@@ -18,6 +18,8 @@ namespace MU.Modelos
 
         public bool ContieneU { get; set; }
 
+        public bool Limpiar { get; set; }
+
         public Mu(string cadenaInicial, string ultimaRegla/*, List<string> historial*/)
         {
             Cadena = cadenaInicial;
