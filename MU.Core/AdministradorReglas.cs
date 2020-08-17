@@ -160,7 +160,7 @@ namespace MU.Modelos
 
         private Mu CopiarObjetoCadena(Mu mu, string regla)
         {
-            Mu newMu = new Mu(mu.Cadena, regla);
+            Mu newMu = new Mu(mu.Cadena, regla, mu.Historial);
             return newMu;
         }
 
@@ -172,7 +172,7 @@ namespace MU.Modelos
             {
                 if (coordenada.YaUtilizada == false) 
                 {
-                    Mu newMu = new Mu(NuevaCadenaReglaTres(coordenada, mu), regla);
+                    Mu newMu = new Mu(NuevaCadenaReglaTres(coordenada, mu), regla, mu.Historial);
                     listMuSustituido.Add(newMu);
                 }
             }
@@ -188,7 +188,7 @@ namespace MU.Modelos
             {
                 if (coordenada.YaUtilizada == false)
                 {
-                    Mu newMu = new Mu(NuevaCadenaReglaCuatro(coordenada, mu), regla);
+                    Mu newMu = new Mu(NuevaCadenaReglaCuatro(coordenada, mu), regla, mu.Historial);
                     listMuSustituido.Add(newMu);
                 }
             }

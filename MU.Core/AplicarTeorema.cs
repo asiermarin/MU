@@ -19,7 +19,7 @@ namespace MU
         public AplicarTeorema()
         {
             _listaDeCadenas = new List<Mu>();
-            _mu = new Mu("", "0");
+            _mu = new Mu("", "0", new List<string>());
             _adminReglas = new AdministradorReglas();
 
             IniciarBuble();
@@ -60,7 +60,7 @@ namespace MU
 
         private Mu CrearCadenaInicial()
         {
-            Mu muInicial = new Mu("MI", "0");
+            Mu muInicial = new Mu("MI", "", new List<string>());
             return muInicial;
         }
 
@@ -99,7 +99,15 @@ namespace MU
 
             foreach (var muDeLista in _listaDeCadenas)
             {
-                Console.WriteLine(muDeLista.Cadena + " ---------> "+ "(" + muDeLista.UltimaRegla + ") " + muDeLista.EsMu);
+                Console.WriteLine(muDeLista.Cadena + " ---------> " + "(" + muDeLista.UltimaRegla + ") " + muDeLista.EsMu);
+                
+                string historial = "";
+                foreach(var regla in muDeLista.Historial)
+                {
+                    historial += regla;
+                }
+
+                Console.WriteLine(historial);
             }
 
             Console.WriteLine("----------------------------------");

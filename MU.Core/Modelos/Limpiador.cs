@@ -32,10 +32,19 @@ namespace MU.Modelos
                     mu.Cadena[3].ToString().Equals(muNoPosible1[3].ToString()) &&
                     mu.Cadena[4].ToString().Equals(muNoPosible1[4].ToString()))
                 {
-                    mu.Limpiar == true;
+                    mu.Limpiar = true;
+                } 
+                else if (mu.Cadena[1].ToString().Equals(muNoPosible2[1].ToString()) &&
+                    mu.Cadena[2].ToString().Equals(muNoPosible2[2].ToString()) &&
+                    mu.Cadena[3].ToString().Equals(muNoPosible2[3].ToString()) &&
+                    mu.Cadena[4].ToString().Equals(muNoPosible2[4].ToString()))
+                {
+                    mu.Limpiar = true;
                 }
-
-
+                else
+                {
+                    mu.Limpiar = false;
+                }
             }
         }
     }

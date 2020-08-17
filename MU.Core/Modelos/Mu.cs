@@ -20,31 +20,38 @@ namespace MU.Modelos
 
         public bool Limpiar { get; set; }
 
-        public Mu(string cadenaInicial, string ultimaRegla/*, List<string> historial*/)
+        public Mu(string cadenaInicial, string ultimaRegla, List<string> historial)
         {
             Cadena = cadenaInicial;
             UltimaRegla = ultimaRegla;
             ContieneIII = false;
             ContieneU = false;
 
-            /*
-            Historial = new List<string>(); 
-            Historial =  historial;
+            ReplicarHisotorial(historial);
             Historial.Add(UltimaRegla);
-            */
-
+            
             ComprobarMu();
         }
 
         private void ComprobarMu()
         {
-            if(Cadena == "Mu")
+            if(Cadena == "MU")
             {
                 EsMu = true;
             }
             else 
             {
                 EsMu = false;
+            }
+        }
+
+        private void ReplicarHisotorial(List<string> historial)
+        {
+            Historial = new List<string>();
+
+            foreach(var regla in historial)
+            {
+                Historial.Add(regla);
             }
         }
     }
