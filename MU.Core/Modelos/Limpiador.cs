@@ -9,19 +9,29 @@ namespace MU.Modelos
     {
         public bool ListaLimpia { get; set; }
 
+        public int ObjetosEliminados { get; set; }
+
         public Limpiador()
         {
             ListaLimpia = false;
+            ObjetosEliminados = 0;
         }
 
         public void LimpiarDuplicados(List<Mu> listaMu)
         {
+            int tamanoListaInicial = listaMu.Count;
             listaMu.GroupBy(mu => mu.Cadena).Select(mu => mu.First());
             listaMu.Distinct().Select(mu => mu.Cadena);
+
+            int tamanoListaFinal = listaMu.Count;
+
+            CuantosObjetosEminiados(tamanoListaInicial, tamanoListaFinal);
         }
 
         public void LimpiarMenosPosibles(List<Mu> listaMu)
         {
+            int tamanoListaInicial = listaMu.Count;
+
             string muNoPosible1 = "MUIUI";
             string muNoPosible2 = "MIUIU";
 
@@ -45,6 +55,17 @@ namespace MU.Modelos
                 {
                     mu.Limpiar = false;
                 }
+            }
+            int tamanoListaFinal = listaMu.Count;
+
+            CuantosObjetosEminiados(tamanoListaInicial, tamanoListaFinal);
+        }
+
+        private void CuantosObjetosEminiados(int tamanoListaInicial, int tamanoListaFinal)
+        {
+            if (tamanoListaInicial > tamanoListaFinal)
+            {
+                ObjetosEliminados += (tamanoListaInicial - tamanoListaFinal);
             }
         }
     }
