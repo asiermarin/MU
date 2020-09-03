@@ -21,9 +21,11 @@ namespace MU
             _listaDeCadenas = new List<Mu>();
             _mu = new Mu("", "0", new List<string>());
             _adminReglas = new AdministradorReglas();
+
+            IniciarBuble();
         }
 
-        public void IniciarBucle()
+        private void IniciarBuble()
         {
             var mi = CrearCadenaInicial();
             _listaDeCadenas.Add(mi);

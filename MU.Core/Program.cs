@@ -6,7 +6,8 @@ namespace MU
     {
         static void Main(string[] args)
         {
-            AplicarTeorema aplicar = new AplicarTeorema();
+            AplicarTeorema x = new AplicarTeorema();
+            x.IniciarBucle();
         }
     }
 }

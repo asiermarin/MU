@@ -1,4 +1,5 @@
 ﻿using Moq;
+using MU.Modelos;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

@@ -8,7 +8,7 @@
     <PackageId>Msin.Mu.NET</PackageId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>The first version of the MU riddle.</Description>
-    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/asiermarin/MU</PackageProjectUrl>
     <PackageIcon>Science-Mu-icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/asiermarin/MU</RepositoryUrl>
