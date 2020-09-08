@@ -37,29 +37,39 @@ namespace MU.Modelos
 
             foreach (var mu in listaMu)
             {
-                if (mu.Cadena[1].ToString().Equals(muNoPosible1[1].ToString()) &&
+                if (mu.Cadena.Length >= 5)
+                {
+                    if (mu.Cadena[1].ToString().Equals(muNoPosible1[1].ToString()) &&
                     mu.Cadena[2].ToString().Equals(muNoPosible1[2].ToString()) &&
                     mu.Cadena[3].ToString().Equals(muNoPosible1[3].ToString()) &&
                     mu.Cadena[4].ToString().Equals(muNoPosible1[4].ToString()))
-                {
-                    mu.Limpiar = true;
-                } 
-                else if (mu.Cadena[1].ToString().Equals(muNoPosible2[1].ToString()) &&
-                    mu.Cadena[2].ToString().Equals(muNoPosible2[2].ToString()) &&
-                    mu.Cadena[3].ToString().Equals(muNoPosible2[3].ToString()) &&
-                    mu.Cadena[4].ToString().Equals(muNoPosible2[4].ToString()))
-                {
-                    mu.Limpiar = true;
-                }
-                else
-                {
-                    mu.Limpiar = false;
+                    {
+                        mu.Limpiar = true;
+                    }
+                    else if (mu.Cadena[1].ToString().Equals(muNoPosible2[1].ToString()) &&
+                        mu.Cadena[2].ToString().Equals(muNoPosible2[2].ToString()) &&
+                        mu.Cadena[3].ToString().Equals(muNoPosible2[3].ToString()) &&
+                        mu.Cadena[4].ToString().Equals(muNoPosible2[4].ToString()))
+                    {
+                        mu.Limpiar = true;
+                    }
+                    else
+                    {
+                        mu.Limpiar = false;
+                    }
                 }
             }
             int tamanoListaFinal = listaMu.Count;
-
             CuantosObjetosEminiados(tamanoListaInicial, tamanoListaFinal);
         }
+
+        public List<Mu> LimpiarListaCadenas(List<Mu> listaCadenas)
+        {
+            ObjetosEliminados += listaCadenas.RemoveAll(mu => mu.Limpiar == true);
+            
+            return listaCadenas;
+        }
+        
 
         private void CuantosObjetosEminiados(int tamanoListaInicial, int tamanoListaFinal)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MU.Test;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,13 +11,13 @@ namespace MU.Modelos
 
         private List<CoordenadasU> _listaCoordenadasU;
 
-        private Limpiador _limpiador;
+        private CreadorCoordenadasU _creadorCoordenadas;
 
         public AdministradorReglas()
         {
             _listaCoordenadasIII = new List<CoordenadasIII>();
             _listaCoordenadasU = new List<CoordenadasU>();
-            _limpiador = new Limpiador();
+            _creadorCoordenadas = new CreadorCoordenadasU();
         }
 
         public Mu AplicarReglaUnoSiEsPosible(Mu mu) 
@@ -80,6 +81,7 @@ namespace MU.Modelos
             }
         }
 
+
         public List<Mu> AplicarReglaCuatroSiEsPosible(Mu mu)
         {
             string regla = "4";
@@ -116,17 +118,23 @@ namespace MU.Modelos
 
         private Mu RevisarUU(Mu mu)
         {
-            for (int i = 1; i < mu.Cadena.Length; i++)
+            _creadorCoordenadas.CadenaRevisar = mu.Cadena;
+            _creadorCoordenadas.CrearCoordenadas();
+
+            foreach (CoordenadasU coordenada in _creadorCoordenadas.DevolverListaCoordenadas())
             {
-                if (mu.Cadena.Length > i + 1 &&
-                    (mu.Cadena[i].ToString() + mu.Cadena[i + 1].ToString()).Equals("UU"))
+                if (coordenada != null)
                 {
-                    mu.ContieneU = true;
-                    CoordenadasU coordenadas = CrearCoordenadas(mu, i);
-                    _listaCoordenadasU.Add(coordenadas);
+                    _listaCoordenadasU.Add(coordenada);
                 }
             }
 
+            if (_listaCoordenadasU.Count > 0)
+            {
+                mu.ContieneU = true;
+            }
+
+            _creadorCoordenadas.LimpiarEnMemoria();
             return mu;
         }
 
@@ -228,7 +236,7 @@ namespace MU.Modelos
                 {
                     cadena += "U";
                 }
-                else if (i >= coordenada.CoordenadaPrimera && i <= coordenada.CoordenadaUltima)
+                else if (i > coordenada.CoordenadaPrimera && i <= coordenada.CoordenadaUltima)
                 {
                     // Nothing
                 }

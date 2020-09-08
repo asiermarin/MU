@@ -16,11 +16,14 @@ namespace MU
 
         private AdministradorReglas _adminReglas;
 
+        private Limpiador _limpiador;
+
         public AplicarTeorema()
         {
             _listaDeCadenas = new List<Mu>();
             _mu = new Mu("", "0", new List<string>());
             _adminReglas = new AdministradorReglas();
+            _limpiador = new Limpiador();
         }
 
         public void IniciarBucle()
@@ -39,9 +42,17 @@ namespace MU
                 listaIntento.Clear();
 
                 EncontrarMu();
+                Limpiar();
                 ExportarResultados(intentos);
-
             } while (_mu.EsMu == false);
+        }
+        
+        private void Limpiar()
+        {
+            _limpiador.LimpiarDuplicados(_listaDeCadenas);
+            _limpiador.LimpiarMenosPosibles(_listaDeCadenas);
+
+            _listaDeCadenas = _limpiador.LimpiarListaCadenas(_listaDeCadenas);
         }
 
         private void EncontrarMu()
@@ -93,7 +104,7 @@ namespace MU
         private void ExportarResultados(int intentos)
         {
             Console.WriteLine("----------------------------------");
-            Console.WriteLine("Intento " + intentos);
+            Console.WriteLine("Intento " + intentos + " y elimindos: " + _limpiador.ObjetosEliminados);
 
             foreach (var muDeLista in _listaDeCadenas)
             {
@@ -108,12 +119,13 @@ namespace MU
                 Console.WriteLine(historial);
             }
 
+            Console.WriteLine("Elimindos: " + _limpiador.ObjetosEliminados);
             Console.WriteLine("----------------------------------");
         }
 
         private void GuardarInstancia(Mu mu)
         {
-            if (mu != null && mu.Cadena.Length <= 20)
+            if (mu != null && mu.Cadena.Length <= 30)
             {
                 _listaDeCadenas.Add(mu);
             }
