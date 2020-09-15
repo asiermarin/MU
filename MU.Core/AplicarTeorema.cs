@@ -31,14 +31,16 @@ namespace MU
             var mi = CrearCadenaInicial();
             _listaDeCadenas.Add(mi);
 
+            List<Mu> listaIntento = new List<Mu>();
+
             int intentos = 0;
             do
             {
                 intentos++;
+                listaIntento.AddRange(_listaDeCadenas);
+                _listaDeCadenas.Clear();
 
-                var listaIntento = ClonarLista();
-                _listaDeCadenas.Clear(); 
-                AplicarReglas(listaIntento);
+                AplicarReglasYGuardar(listaIntento);
                 listaIntento.Clear();
 
                 EncontrarMu();
@@ -73,19 +75,7 @@ namespace MU
             return muInicial;
         }
 
-        private List<Mu> ClonarLista()
-        {
-            List<Mu> listaIntento = new List<Mu>();
-
-            foreach(var mu in _listaDeCadenas)
-            {
-                listaIntento.Add(mu);
-            }
-
-            return listaIntento;
-        }
-
-        private void AplicarReglas(List<Mu> listaIntento)
+        private void AplicarReglasYGuardar(List<Mu> listaIntento)
         {
             foreach (var muDeLista in listaIntento)
             {
@@ -135,10 +125,7 @@ namespace MU
         {
             if (listReglaTres != null)
             {
-                foreach (var muReglaTres in listReglaTres)
-                {
-                    GuardarInstancia(muReglaTres);
-                }
+                _listaDeCadenas.AddRange(listReglaTres);
             }
         }
     }

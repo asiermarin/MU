@@ -151,12 +151,9 @@ namespace MU.Test
             {
                 for (int i = 0; i < _listaPrimerasU.Count; i++)
                 {
-                    int coordenadaPrimeraU = _listaPrimerasU[i];
-                    int coordenadaUltimaU = _listaUltimasU[i];
-
-                    if (coordenadaUltimaU - coordenadaPrimeraU == _listaNumeroIntermedioEntreU[i])
+                    if (_listaUltimasU[i] - _listaPrimerasU[i] == _listaNumeroIntermedioEntreU[i])
                     {
-                        CoordenadasU coordenadaU = new CoordenadasU(coordenadaPrimeraU, coordenadaUltimaU);
+                        CoordenadasU coordenadaU = new CoordenadasU(_listaPrimerasU[i], _listaUltimasU[i]);
                         _listaCoordenadas.Add(coordenadaU);
                     }
                 }

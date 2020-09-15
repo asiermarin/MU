@@ -48,11 +48,7 @@ namespace MU.Modelos
         private void ReplicarHisotorial(List<string> historial)
         {
             Historial = new List<string>();
-
-            foreach(var regla in historial)
-            {
-                Historial.Add(regla);
-            }
+            Historial.AddRange(historial);
         }
     }
 }

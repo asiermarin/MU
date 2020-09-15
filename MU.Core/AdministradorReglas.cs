@@ -176,7 +176,17 @@ namespace MU.Modelos
         {
             List<Mu> listMuSustituido = new List<Mu>();
 
-            foreach(var coordenada in _listaCoordenadasIII)
+            _listaCoordenadasIII.ForEach(x =>
+            {
+                if (x.YaUtilizada == false)
+                {
+                    Mu newMu = new Mu(NuevaCadenaReglaTres(x, mu), regla, mu.Historial);
+                    listMuSustituido.Add(newMu);
+                }
+            });
+
+            /*
+            foreach (var coordenada in _listaCoordenadasIII)
             {
                 if (coordenada.YaUtilizada == false) 
                 {
@@ -184,7 +194,7 @@ namespace MU.Modelos
                     listMuSustituido.Add(newMu);
                 }
             }
-
+            */
             return listMuSustituido;
         }
 
