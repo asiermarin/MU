@@ -1,15 +1,14 @@
 ﻿using MU.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Timers;
+using System.Threading;
 
 namespace MU
 {
     class AplicarTeorema
     {
+        private const int TIME_INTERVAL_IN_MILLISECONDS = 4000;
+
         private List<Mu> _listaDeCadenas;
 
         private Mu _mu;
@@ -42,13 +41,15 @@ namespace MU
 
                 AplicarReglasYGuardar(listaIntento);
                 listaIntento.Clear();
-
+                    
                 EncontrarMu();
                 Limpiar();
                 ExportarResultados(intentos);
+                Thread.Sleep(TIME_INTERVAL_IN_MILLISECONDS);
+
             } while (_mu.EsMu == false);
         }
-        
+
         private void Limpiar()
         {
             _limpiador.LimpiarDuplicados(_listaDeCadenas);
