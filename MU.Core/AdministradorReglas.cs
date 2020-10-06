@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MU.Modelos
 {
-    class AdministradorReglas
+    public class AdministradorReglas
     {
         private List<CoordenadasIII> _listaCoordenadasIII;
 

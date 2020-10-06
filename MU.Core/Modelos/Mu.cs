@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MU.Modelos
 {
-    class Mu
+    public class Mu
     {
         public bool EsMu { get; set; }
 
